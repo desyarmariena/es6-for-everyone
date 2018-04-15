@@ -15,7 +15,7 @@ const fullNames2 = names.map((name) => {
 
 Arrow function **selalu anonymous function atau tanpa nama.** Mungkin sedikit sulit untuk traceback jika ada error dikemudian hari, tapi arrow function bisa ditampung dalam variable.
 
-Jika parameter dalam function hanya satu, tanda kurung () bisa dihilangkan. Jika parameter lebih dari 1 atau kosong, harus menggunakan tanda kurung ().
+Jika argument dalam function hanya satu, tanda kurung () bisa dihilangkan. Jika argument lebih dari 1 atau kosong, harus menggunakan tanda kurung ().
 
 ```javascript
 const old = ages.filter(age => age>=60); // function mengembalikan nilai dari age >= 60
@@ -41,7 +41,7 @@ const box = document.querySelector('.box');
       this.classList.toggle('opening');      
 });
 ```
-contoh diatas tidak bisa menggunakan arrow function, karena this akan inherit dari parentnya, yaitu window.
+Contoh diatas tidak bisa menggunakan arrow function, karena this akan inherit dari parentnya, yaitu window.
 
 ```javascript
 const box = document.querySelector('.box');
@@ -52,10 +52,20 @@ box.addEventListener('click', function(){
     }, 500);
 });
 ```
-pada function setTimeout, kita bisa menggunakan arrow function karena this pada setTimeout function tersebut inherit this pada parent scopenya, yaitu box.addEventListener
+Pada function setTimeout, kita bisa menggunakan arrow function karena this pada setTimeout function tersebut inherit this pada parent scopenya, yaitu box.addEventListener
 
 # Switch Value
-untuk mengganti value dari dua variable pada ES6, cukup dengan syntax sebagai berikut:
+Untuk mengganti value dari dua variable pada ES6, cukup dengan syntax sebagai berikut:
 ```javascript
 [val1, val2] = [val2, val1];
 ```
+
+# Function Default Argument
+```javascript
+function calculateBill(total, tax = 0.13, tip = 0.15){
+    return total + (total * tax) + (total * tip);
+}
+
+const totalBill = calculateBill(100, undefined, 0.25);
+```
+Jika parameter tidak sama dengan argument, kita bisa memberi nilai default pada parameternya.
