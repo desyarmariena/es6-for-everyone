@@ -18,18 +18,19 @@ Arrow function **selalu anonymous function atau tanpa nama.** Mungkin sedikit su
 Jika parameter dalam function hanya satu, tanda kurung () bisa dihilangkan. Jika parameter lebih dari 1 atau kosong, harus menggunakan tanda kurung ().
 
 ```javascript
-const old = ages.filter(age => age>=60); // function mengembalikan nilai dari array >= 60
+const old = ages.filter(age => age>=60); // function mengembalikan nilai dari age >= 60
 
 const win = winners.map( (winner,i) => ({name:winner, race, place:i+1}) ); // function mengembalikan object
 ```
 
 **Explicit & Implicit return**
+
 Explicit artinya ditulis perintah return, sedangkan implicit artinya tidak perlu ditulis perintah return.
 ```javascript
 const old = ages.filter(age => {
     return age>=60;
 }); // explicit return
-const old = ages.filter(age => age>=60); // explicit return
+const old = ages.filter(age => age>=60); // implicit return
 ```
 
 ## this dalam Arrow Function
@@ -45,7 +46,7 @@ contoh diatas tidak bisa menggunakan arrow function, karena this akan inherit da
 ```javascript
 const box = document.querySelector('.box');
 box.addEventListener('click', function(){
-    this.classList.toggle('opening);
+    this.classList.toggle('opening');
     setTimeout(() => {
         this.classList.toggle('open');
     }, 500);
