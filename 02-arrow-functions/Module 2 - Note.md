@@ -1,6 +1,6 @@
 # Arrow Function
 
-Penggunaan arrow function membuat penulisan lebih ringkas, cukup mengganti _function_ dengan tanda panah
+Penggunaan arrow function membuat penulisan lebih ringkas, cukup mengganti _function_ dengan tanda panah.
 
 ```javascript
 const fullNames = names.map(function(name){
@@ -13,7 +13,7 @@ const fullNames2 = names.map((name) => {
     });
 ```
 
-Arrow function **selalu anonymous function.** Mungkin sedikit sulit untuk traceback jika ada error dikemudian hari, tapi arrow function bisa ditampung dalam variable.
+Arrow function **selalu anonymous function atau tanpa nama.** Mungkin sedikit sulit untuk traceback jika ada error dikemudian hari, tapi arrow function bisa ditampung dalam variable.
 
 Jika parameter dalam function hanya satu, tanda kurung () bisa dihilangkan. Jika parameter lebih dari 1 atau kosong, harus menggunakan tanda kurung ().
 
@@ -30,4 +30,31 @@ const old = ages.filter(age => {
     return age>=60;
 }); // explicit return
 const old = ages.filter(age => age>=60); // explicit return
+```
+
+## this dalam Arrow Function
+this dalam arrow function selalu **inherit dari paret scope.**
+```javascript
+const box = document.querySelector('.box');
+    box.addEventListener('click', function(){
+      this.classList.toggle('opening');      
+});
+```
+contoh diatas tidak bisa menggunakan arrow function, karena this akan inherit dari parentnya, yaitu window.
+
+```javascript
+const box = document.querySelector('.box');
+box.addEventListener('click', function(){
+    this.classList.toggle('opening);
+    setTimeout(() => {
+        this.classList.toggle('open');
+    }, 500);
+});
+```
+pada function setTimeout, kita bisa menggunakan arrow function karena this pada setTimeout function tersebut inherit this pada parent scopenya, yaitu box.addEventListener
+
+# Switch Value
+untuk mengganti value dari dua variable pada ES6, cukup dengan syntax sebagai berikut:
+```javascript
+[val1, val2] = [val2, val1];
 ```
